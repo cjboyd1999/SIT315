@@ -1,0 +1,19 @@
+# SIT315 - Task 1.1P
+### Build a Simple Sense-Think-Act Board
+
+In this task, I created a sense-think-act system using the following components:
+- 1 x Arduino Uno
+- 1 x Small breadboard
+- 1 x Green LED
+- 1 x 250Ω resistor
+- 1 x TMP36 temperature sensor
+
+![Tinkercad diagram](https://github.com/cjboyd1999/SIT315/Module-1\Task-1.1P\Design.png "Tinkercad diagram")
+
+The system works by detecting if the temperature is greater than 30 degrees Celsius. If it is, the green LED turns on, otherwise it will turn/remain off.
+
+The project can be copied and run on Tinkercad.
+
+<iframe width="725" height="453" src="https://www.tinkercad.com/embed/gaporabekgS?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+
+This project was based on codebender_cc's "How to Use the TMP36 Temp Sensor - Arduino Tutorial" on Instructables which can be viewed [here](https://www.instructables.com/id/How-to-use-the-TMP36-temp-sensor-Arduino-Tutorial/).
