@@ -4,6 +4,7 @@ const int tempPin = 0;
 // Setup the Arduino to output to digital pin 13
 void setup()
 {
+ 	Serial.begin(9600);
 	pinMode(13, OUTPUT);
 }
 
@@ -19,15 +20,24 @@ void loop()
   // Convert the voltage into its corresponding temperature in degrees Celcius
   degreesC = (voltage - 0.5) * 100.0;
   
+  Serial.print("Current Voltage: ");
+  Serial.print(voltage);
+  Serial.print(" | Current Temp: ");
+  Serial.print(degreesC);
+  
   // Check if the temperature is over 30 degrees Celsius, if so turn the LED on
   if (degreesC > 30)
   {
   	digitalWrite(13, HIGH);
+    Serial.println(" | LED Status: ON");
   }
   
   // If the temperature is NOT over 30 degrees Celsius, turn the LED off
   else
   {
-  	digitalWrite(13, LOW); 
+  	digitalWrite(13, LOW);
+    Serial.println(" | LED Status: OFF");
   }
+  
+  delay(1500);
 }
