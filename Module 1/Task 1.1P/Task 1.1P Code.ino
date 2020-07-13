@@ -1,43 +1,44 @@
-// Set a constant integer of the analog pin being used
-const int tempPin = 0;
-
-// Setup the Arduino to output to digital pin 13
+// Set up the serial monitor, input and output pins
 void setup()
 {
- 	Serial.begin(9600);
+	Serial.begin(9600);
+  
+    // Set pin 2 to receive input(PIR Sensor)
+	pinMode(2, INPUT);
+  
+  	// Set pin 13 to give output(LED)
 	pinMode(13, OUTPUT);
 }
 
-// Loop to check the current temperature and act upon it changing
+// Loop that is constantly run as long as power is received
 void loop()
 {
-  // Define a float for voltage and degrees Celsius
-  float voltage, degreesC;
+  	// If the PIR Sensor detects motion:
+	if(digitalRead(2) == HIGH)
+    {
+      	// Print that motion is detected
+    	Serial.print("Motion: DETECTED ");
+      
+      	// Turn the LED on
+      	digitalWrite(13, HIGH);
+      
+      	// Print that the LED is on
+      	Serial.println("| LED: ON");
+    }
+  	
+    // Otherwise, the PIR Sensor is not detecting motion, so:
+  	else
+    {
+      	// Print that motion is not detected
+      	Serial.print("Motion: NOT DETECTED ");
+      
+      	// Turn the LED off (incase it was on)
+      	digitalWrite(13, LOW);
+      
+      	// Print that the LED is off
+      	Serial.println("| LED: OFF");
+    }
   
-  // Convert the 0-1023 analog input to its real voltage between 0.0 and 5.0
-  voltage = analogRead(tempPin) * 0.004882814;
-  
-  // Convert the voltage into its corresponding temperature in degrees Celcius
-  degreesC = (voltage - 0.5) * 100.0;
-  
-  Serial.print("Current Voltage: ");
-  Serial.print(voltage);
-  Serial.print(" | Current Temp: ");
-  Serial.print(degreesC);
-  
-  // Check if the temperature is over 30 degrees Celsius, if so turn the LED on
-  if (degreesC > 30)
-  {
-  	digitalWrite(13, HIGH);
-    Serial.println(" | LED Status: ON");
-  }
-  
-  // If the temperature is NOT over 30 degrees Celsius, turn the LED off
-  else
-  {
-  	digitalWrite(13, LOW);
-    Serial.println(" | LED Status: OFF");
-  }
-  
-  delay(1500);
+  	// Add a 100ms delay to stop the Tinkercad service from lagging
+  	delay(100);
 }
