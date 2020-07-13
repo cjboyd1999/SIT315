@@ -1,48 +1,51 @@
-// Set a constant integer of the analog pin being used
-const int tempPin = 0;
-
-// Setup the Arduino to output to digital pin 13
+// Set up the serial monitor, input and output pins and interrupt
 void setup()
 {
- 	Serial.begin(9600);
+	Serial.begin(9600);
+  
+    // Set the PIR sensor pin to expect input
+	pinMode(2, INPUT);
+  
+  	// Set the LED pin to provide output
 	pinMode(13, OUTPUT);
+  	
+  	// Define interrupt to occur when the input changes and to run the 'detectMotion()' function
+  	attachInterrupt(digitalPinToInterrupt(2), detectMotion, CHANGE);
 }
 
-// Loop to check the current temperature and act upon it changing
+// Loop that is constantly run as long as power is received
 void loop()
 {
-  // Define a float for voltage and degrees Celsius
-  float voltage, degreesC;
-  
-  // Convert the 0-1023 analog input to its real voltage between 0.0 and 5.0
-  voltage = analogRead(tempPin) * 0.004882814;
-  
-  // Convert the voltage into its corresponding temperature in degrees Celcius
-  degreesC = (voltage - 0.5) * 100.0;
-  
-  Serial.print("Current Voltage: ");
-  Serial.print(voltage);
-  Serial.print(" | Current Temp: ");
-  Serial.print(degreesC);
-  
-  // Check if the temperature is over 30 degrees Celsius, if so turn the LED on
-  if (degreesC > 30)
-  {
-  	digitalWrite(13, HIGH);
-    Serial.println(" | LED Status: ON");
-  }
-  
-  // If the temperature is NOT over 30 degrees Celsius, turn the LED off
-  else
-  {
-  	digitalWrite(13, LOW);
-    Serial.println(" | LED Status: OFF");
-  }
-  
-  delay(1500);
+  	// Add a 100ms delay to stop the Tinkercad service from lagging and to simulate system usage
+  	delay(100);
 }
-
-void activateLED()
+                    
+// Function to run when interrupted
+void detectMotion()
 {
-	
+  	// If there is motion:
+  	if (digitalRead(2) == HIGH)
+  	{
+		// Print that motion is detected
+    	Serial.print("Motion: DETECTED ");
+      
+        // Turn the LED on
+     	digitalWrite(13, HIGH);
+
+     	// Print that the LED is on
+     	Serial.println("| LED: ON");
+    }
+    
+  	// If there is no motion:
+  	else 
+    {
+    	// Print that motion is not detected
+    	Serial.print("Motion: UNDETECTED ");
+      
+        // Turn the LED on
+     	digitalWrite(13, LOW);
+
+     	// Print that the LED is on
+     	Serial.println("| LED: OFF");
+    }
 }
