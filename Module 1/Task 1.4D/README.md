@@ -32,3 +32,4 @@ Resources used for this project:
 * [Arduino Interrupts](https://www.teachmemicro.com/arduino-interrupt-tutorial/)
 * [Arduino Uno to ATmega328 Pin Mapping](https://components101.com/microcontrollers/arduino-uno)
 * [Pin Change Interrupt](https://playground.arduino.cc/Main/PinChangeInterrupt/)
+* [Timer Interrupts](https://www.youtube.com/watch?v=IdL0_ZJ7V2s)
