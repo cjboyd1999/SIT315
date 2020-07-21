@@ -14,8 +14,6 @@ In this task, I created an interrupt-driven system using the following component
 - 1 x PIR Sensor
 - 2 x Pushbutton
 
-https://www.teachmemicro.com/arduino-interrupt-tutorial/
-
 ![Tinkercad diagram](https://raw.githubusercontent.com/cjboyd1999/SIT315/master/Module%201/Task%201.4D/Diagram.png "Tinkercad diagram")
 
 This task was to convert my system created in [Task 1.3C](https://github.com/cjboyd1999/SIT315/tree/master/Module%201/Task%201.3C) to work with both another input for an interrupt and a timer interrupt. I achieved this by adding another button and new LED that works identically to the other; interrupt when the button changes states and turn the LED on or off depending on if it is being pressed or released.
@@ -29,3 +27,8 @@ Additionally, the serial monitor prints:
 ![Tinkercad serial monitor snippet](https://raw.githubusercontent.com/cjboyd1999/SIT315/master/Module%201/Task%201.4D/Serial%20Monitor.png "Tinkercad serial monitor snippet")
 
 The project can be copied and simulated on Tinkercad using [this](https://www.tinkercad.com/things/laewfSZTbV2) link.
+
+Resources used for this project:
+* [Arduino Interrupts](https://www.teachmemicro.com/arduino-interrupt-tutorial/)
+* [Arduino Uno to ATmega328 Pin Mapping](https://components101.com/microcontrollers/arduino-uno)
+* [Pin Change Interrupt](https://playground.arduino.cc/Main/PinChangeInterrupt/)
